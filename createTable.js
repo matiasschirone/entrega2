@@ -4,8 +4,8 @@ const { options } = require('./mariaDB/conexionDB');
 const knexSqlite3 = require('knex')(optionSqlite3);
 const knex = require('knex')(options);
 
-const tablaProductos = "./archivosDB/productos.json";
-const tablaMensajes = "./archivosDB/mensajes.json";
+const tablaProductos = "productos.json";
+const tablaMensajes = "mensajes.json";
 
 const batchMariaDB = async () => {
     try {

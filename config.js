@@ -14,7 +14,7 @@ export default {
     optionSqlite3: {
         client: 'sqlite3',
         connection: {
-            filename: './ecommerce/mydb.sqlite'
+            filename: './DB/mydb.sqlite'
         },
         useNullAsDefault: true
     },
