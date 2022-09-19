@@ -7,5 +7,6 @@ routerProductos.get('/:id', getProductById);
 routerProductos.post('/', postProduct);
 routerProductos.put('/:id', putProduct);
 routerProductos.delete('/:id', deleteProduct);
+routerProductos.get('*', getErrorProduct);
 
 module.exports = routerProductos;
