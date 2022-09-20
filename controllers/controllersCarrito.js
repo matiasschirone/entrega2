@@ -76,17 +76,11 @@ const listarCarrito = async(req, res = response) => {
 } 
 
 
-routerCarrito.get('*', (req, res) => {
+/*getCarritoError (req, res) => {
     res.send({
         error: -2,
         description: 'Ruta no encontrada'
     })
-} )
+} */
 
-module.exports = { 
-    postCarrito, 
-    deleteCarrito, 
-    postbyIDCarrito, 
-    deleteByIdCarrito, 
-    listarCarrito,
-    getCarritoById }
+module.exports = { postCarrito, deleteCarrito, postbyIDCarrito, deleteByIdCarrito, getCarritoById, listarCarrito }
