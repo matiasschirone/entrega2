@@ -33,7 +33,4 @@ switch ('json') {
         break;
 }
 
-export {
-    productosDao,
-    carritoDao
-}
+module.exports = { productosDao, carritoDao }

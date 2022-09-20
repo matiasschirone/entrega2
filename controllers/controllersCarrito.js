@@ -58,12 +58,13 @@ const deleteByIdCarrito = async(req, res = response) => {
     })
 }
 
-routerCarrito.get('/:id', async(req, res = response) => {
+//routerCarrito.get('/:id', async(req, res = response) => {
+const getCarritoById = async(req, res = response) => {
     const id = req.params.id
     
     let productoId = await carrito.getById(id)   
     res.send(productoId)
-} )
+} 
 
 //me permite listar todos los productos listados en el carrito
 //routerCarrito.get('/:id/productos', async(req, res) => {
@@ -87,4 +88,5 @@ module.exports = {
     deleteCarrito, 
     postbyIDCarrito, 
     deleteByIdCarrito, 
-    listarCarrito }
+    listarCarrito,
+    getCarritoById }
