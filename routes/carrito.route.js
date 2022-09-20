@@ -8,6 +8,6 @@ routerCarrito.delete('/:id', deleteCarrito);
 routerCarrito.post('/:id/productos/:id_prod', postbyIDCarrito);
 routerCarrito.delete('/:id/productos/:id_prod', deleteByIdCarrito);
 routerCarrito.get('/:id', getCarritoById);
-routerCarrito.get('/', listarCarrito);
+routerCarrito.get('/:id/productos', listarCarrito);
 
 module.exports = routerCarrito;

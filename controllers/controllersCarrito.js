@@ -1,14 +1,15 @@
 const { response } = require('express');
 
 const CarritoDaoArchivo = require('../daos/carrito/CarritoDaoArchivo.js')
-const carritoDao = new CarritoDaoArchivo()
+
+const carritoDaoArchivo = new CarritoDaoArchivo('./archivoDB/carrito.json')
 
 //crea carrito y devuelve su id
 const postCarrito = async(req, res = response) => {
     const objProducto = req.body
     console.log(req.body)
    
-    let producto = await carrito.save(objProducto)
+    let producto = await carritoDaoArchivo.save(objProducto)
     res.send({
         message: 'Producto guardado',
         objProducto
@@ -20,7 +21,7 @@ const postCarrito = async(req, res = response) => {
 const deleteCarrito = async(req, res = response) => {
     const { id } = req.params
     
-    let producto = await carrito.deleteId(parseInt(id))
+    let producto = await carritoDaoArchivo.deleteId(parseInt(id))
     res.send({
         message: 'Producto eliminado',
         id
@@ -33,9 +34,9 @@ const deleteCarrito = async(req, res = response) => {
 const postbyIDCarrito = async(req, res = response) => {
     const { id, id_prod } = req.params
 
-    const productById = await contenedor.getById(parseInt(id_prod))
+    const productById = await productoDaoArchivo.getById(parseInt(id_prod))
     console.log("productById", productById)
-    carritoById = await carrito.addProductToCart(id, productById)
+    let carritoById = await carritoDaoArchivo.addProductToCart(id, productById)
 
     res.send({
         message: 'Producto agregado al carrito',
@@ -50,7 +51,7 @@ const deleteByIdCarrito = async(req, res = response) => {
     
     const { id, id_prod } = req.params
 
-    carritoById = await carrito.deleteProductFromCart(id, id_prod)
+    let carritoById = await carritoDaoArchivo.deleteProductFromCart(id, id_prod)
 
     res.send({
         message: 'Producto eliminado del carrito',
@@ -62,7 +63,7 @@ const deleteByIdCarrito = async(req, res = response) => {
 const getCarritoById = async(req, res = response) => {
     const id = req.params.id
     
-    let productoId = await carrito.getById(id)   
+    let productoId = await carritoDaoArchivo.getById(id)   
     res.send(productoId)
 } 
 
@@ -71,7 +72,7 @@ const getCarritoById = async(req, res = response) => {
 const listarCarrito = async(req, res = response) => {
     const id = req.params.id
 
-    let productoId = await carrito.getById(id)
+    let productoId = await carritoDaoArchivo.getById(id)
     res.send(productoId)
 } 
 
