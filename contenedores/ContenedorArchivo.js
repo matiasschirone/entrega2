@@ -112,7 +112,7 @@ class ContenedorArchivo {
 	}
 	async addProductToCart(idCart, objProduct){
         try{
-            let dataArch = await this.#readFileFunction(this.ruta)
+            let dataArch = await this.readFileFunction(this.ruta)
 
             let carrito = dataArch.find(carrito => carrito.id == idCart)
             console.log(carrito)
@@ -132,7 +132,7 @@ class ContenedorArchivo {
 
 	async deleteProductFromCart(idCart, idProduct) {
 		try {
-            let dataArch = await this.#readFileFunction(this.ruta)
+            let dataArch = await this.readFileFunction(this.ruta)
 
             let prodFilter = dataArch.filter(cart => cart.id == idCart)
             console.log("prodFilter", prodFilter)

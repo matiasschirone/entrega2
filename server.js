@@ -1,29 +1,40 @@
 const dotenv = require('dotenv').config();
 const { Router } = require('express');
 const express = require("express");
-/*const { options } = require('./mariaDB/conexionDB');
-const { optionSqlite3 } = require('./sqlite3/conexionSqlite3');
-
-const knex = require('knex')(options);
-const knexSqlite3 = require('knex')(optionSqlite3);*/
-
-/*const { Server: HttpServer } = require("http");
-const { Server: IoServer } = require("socket.io");
+const routerProductos = Router();
+const routerCarrito = Router();
+const { Contenedor } = require("./contenedor");
 const app = express();
-const httpServer = new HttpServer(app);
-const io = new IoServer(httpServer);*/
+
 
 app.use(express.json());
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
+
+//const contenedor = new Contenedor("./productos.json");
+//const carrito = new Contenedor("./carrito.json");
+
 const administrador = true;
+
+
+
+//carrito
+
+
+
+routerCarrito.get('*', (req, res) => {
+    res.send({
+        error: -2,
+        description: 'Ruta no encontrada'
+    })
+} )
 
 
 app.use('/api/productos', routerProductos)
 app.use('/api/carrito', routerCarrito)
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT
 app.listen(PORT, err => {
 	if (err) throw err;
 	console.log(`Server running on port ${PORT}`);
