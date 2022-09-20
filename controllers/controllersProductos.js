@@ -2,7 +2,7 @@ const { response } = require('express');
 
 const ProductosDaoArchivo = require('../daos/productos/ProductosDaoArchivo.js')
 
-const productosDaoArchivo = new ProductosDaoArchivo('../archivosDB/productos.json')
+const productosDaoArchivo = new ProductosDaoArchivo('./archivosDB/productos.json')
 
 //const { productosDao: productosApi } = require('../daos/index.js')
 
