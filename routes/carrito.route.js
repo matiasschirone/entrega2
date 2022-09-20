@@ -1,6 +1,7 @@
 const express = require('express');
-const routerCarrito = express.Router();
 const { getCarrito, getCarritoById, postCarrito, putCarrito, deleteCarrito } = require('../controllers/carrito.controller.js');
+const { Router } = express;
+const routerCarrito = Router();
 
 routerCarrito.get('/', getCarrito);
 routerCarrito.get('/:id', getCarritoById);

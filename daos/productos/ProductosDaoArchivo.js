@@ -1,4 +1,4 @@
-const { ContenedorArchivo } = require('../../contenedores/ContenedorArchivo');
+import { ContenedorArchivo } from "../../contenedores/ContenedorArchivo";
 
 class ProductosDaoArchivo extends ContenedorArchivo {
     constructor() {

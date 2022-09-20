@@ -1,4 +1,4 @@
-const ContenedorFireBase = require('../../contenedores/ContenedorFireBase');
+import ContenedorFireBase from "../../contenedores/ContenedorFireBase";
 
 class ProductosDaoFireBase extends ContenedorFireBase {
     constructor() {

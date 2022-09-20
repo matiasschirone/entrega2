@@ -3,8 +3,8 @@ let carritoDao
 
 switch ('json') {
     case 'json':
-        const { default: ProductosDaoArchivo } = await import('.productos/ProductosDaoArchivo.js')
-        const { default: CarritoDaoArchivo } = await import('.carrito/CarritoDaoArchivo.js')
+        const { default: ProductosDaoArchivo } = await import('./productos/ProductosDaoArchivo.js')
+        const { default: CarritoDaoArchivo } = await import('./carrito/CarritoDaoArchivo.js')
 
         productosDao = new ProductosDaoArchivo()
         carritoDao = new CarritoDaoArchivo()
@@ -33,7 +33,7 @@ switch ('json') {
         break;
 }
 
-module.exports = {
+export {
     productosDao,
     carritoDao
 }

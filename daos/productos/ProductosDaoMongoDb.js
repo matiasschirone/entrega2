@@ -1,6 +1,4 @@
-const { ContenedorMongoDb } = require("../../contenedores/ContenedorMongoDb");
-const mongoose = require("mongoose");
-
+import ContenedorMongoDB from "../../contenedores/ContenedorMongoDb";
 
 class ProductosDaoMongoDb extends ContenedorMongoDb {
     constructor() {

@@ -1,10 +1,10 @@
-const { respose } = require('express');
+const { response } = require('express');
 
 const CarritoDaoArchivo = require('../daos/carrito/CarritoDaoArchivo.js')
 const carritoDao = new CarritoDaoArchivo()
 
 //crea carrito y devuelve su id
-const postCarrito = async(req, res) => {
+const postCarrito = async(req, res = response) => {
     const objProducto = req.body
     console.log(req.body)
    
@@ -17,7 +17,7 @@ const postCarrito = async(req, res) => {
 
 
 //vacia un carrito y lo elimina
-const deleteCarrito = async(req, res) => {
+const deleteCarrito = async(req, res = response) => {
     const { id } = req.params
     
     let producto = await carrito.deleteId(parseInt(id))
@@ -30,7 +30,7 @@ const deleteCarrito = async(req, res) => {
 
 //incorpora productos al carrito por su id
 //routerCarrito.post('/:id/productos/:id_prod', async(req, res) => {
-const postbyIDCarrito = async(req, res) => {
+const postbyIDCarrito = async(req, res = response) => {
     const { id, id_prod } = req.params
 
     const productById = await contenedor.getById(parseInt(id_prod))
@@ -46,7 +46,7 @@ const postbyIDCarrito = async(req, res) => {
 
 //elimina un producto por su id de carrito y de producto
 //routerCarrito.delete('/:id/productos/:id_prod', async(req, res) => {
-const deleteByIdCarrito = async(req, res) => {
+const deleteByIdCarrito = async(req, res = response) => {
     
     const { id, id_prod } = req.params
 
@@ -58,7 +58,7 @@ const deleteByIdCarrito = async(req, res) => {
     })
 }
 
-routerCarrito.get('/:id', async(req, res) => {
+routerCarrito.get('/:id', async(req, res = response) => {
     const id = req.params.id
     
     let productoId = await carrito.getById(id)   
@@ -67,7 +67,7 @@ routerCarrito.get('/:id', async(req, res) => {
 
 //me permite listar todos los productos listados en el carrito
 //routerCarrito.get('/:id/productos', async(req, res) => {
-const listarCarrito = async(req, res) => {
+const listarCarrito = async(req, res = response) => {
     const id = req.params.id
 
     let productoId = await carrito.getById(id)

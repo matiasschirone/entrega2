@@ -1,8 +1,11 @@
 const dotenv = require('dotenv').config();
-const { Router } = require('express');
+
 const express = require("express");
-const routerProductos = Router();
-const routerCarrito = Router();
+
+const { Router } = express;
+
+const routerProductos = require('./routes/productos.route.js');
+const routerCarrito = require('./routes/carrito.route.js');
 
 const app = express();
 
@@ -11,24 +14,7 @@ app.use(express.json());
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
-
-//const contenedor = new Contenedor("./productos.json");
-//const carrito = new Contenedor("./carrito.json");
-
 const administrador = true;
-
-
-
-//carrito
-
-
-
-routerCarrito.get('*', (req, res) => {
-    res.send({
-        error: -2,
-        description: 'Ruta no encontrada'
-    })
-} )
 
 
 app.use('/api/productos', routerProductos)
