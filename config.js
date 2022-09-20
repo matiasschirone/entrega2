@@ -2,15 +2,15 @@ export default {
     FileSystem: {
         path: '.DB',
     },
-    Mongo: {
-        cnxStr: 'mongodb://localhost:ecommerce',
-        options: {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            useCreateIndex: true,
-            serverSelectionTimeoutMS: 5000,
-        },
-    },
+    Mongo : {
+        cnxStr : 'mongodb://localhost:comercio electrónico' ,
+        opciones : {
+            useNewUrlParser : verdadero ,
+            useUnifiedTopology : verdadero ,
+            useCreateIndex : verdadero ,
+            serverSelectionTimeoutMS : 5000 ,
+        } ,
+    } ,
     optionSqlite3: {
         client: 'sqlite3',
         connection: {

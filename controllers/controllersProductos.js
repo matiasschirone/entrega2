@@ -4,7 +4,7 @@ const ProductosDaoArchivo = require('../daos/productos/ProductosDaoArchivo.js')
 const productosDaoArchivo = new ProductosDaoArchivo('../archivosDB/productos.json')
 
 //const {productoDao: productosApi } = require('..daos/index.js')
-routerProductos.get('/', async(req, res) => {
+/*routerProductos.get('/', async(req, res) => {
  console.log('productosDaoArchivo', productosDaoArchivo)
     let productos = await productosDaoArchivo.getAll()
     res.send(productos)
@@ -53,10 +53,10 @@ routerProductos.get('*', (req, res) => {
         error: -2,
         description: 'Ruta no encontrada'
     })
-} )
+} )*/
 
 
-/*const getProducts = async(req, res) => {
+const getProducts = async(req, res) => {
    
     let productos = await productosDaoArchivo.getAll()
     res.send(productos)
@@ -107,4 +107,4 @@ module.exports = {
     putProducts,
     deleteProducts
   
-}*/
+}

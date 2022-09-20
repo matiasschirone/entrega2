@@ -3,7 +3,7 @@ const { Router } = require('express');
 const express = require("express");
 const routerProductos = Router();
 const routerCarrito = Router();
-const { Contenedor } = require("./contenedor");
+
 const app = express();
 
 
