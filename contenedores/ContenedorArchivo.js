@@ -60,6 +60,19 @@ class ContenedorArchivo {
 			console.log("error de lectura", error);
 		}
 	}
+	async getProductsById(id){
+		try {
+			let dataArch = await this.readFileFunction(this.ruta)
+			let cart = dataArch.find((cart) => cart.id == id)
+			if (cart) {
+				return cart.productos
+			} else {
+				return { error: 'No se encontro el carrito' }
+			}
+		} catch (error) {
+			console.log(error)
+		}
+	}
 
 	// traer producto por id
 	async getById(id) {
@@ -112,6 +125,66 @@ class ContenedorArchivo {
 			console.log("No existe el id", error);
 		}
 	}
+	async addProductToCart(idCart, objProduct){
+        try{
+            let dataArch = await this.readFileFunction(this.ruta)
+
+            let carrito = dataArch.find(carrito => carrito.id == idCart)
+            console.log(carrito)
+            if (carrito) {
+                carritoDaoArchivo.productos.push(objProduct)
+                await fs.promises.writeFile(this.ruta, JSON.stringify( dataArch, null, 2))
+                return {msg: 'producto agregado al carrito'}    
+            } else {
+                return {error: 'no existe el carrito'}
+            }
+        } catch (error) {
+            console.log(error)
+        }
+
+	}
+
+	async deleteProductFromCart(idCart, idProduct) {
+		try {
+            let dataArch = await this.readFileFunction(this.ruta)
+
+            let prodFilter = dataArch.filter(cart => cart.id == idCart)
+            console.log("prodFilter", prodFilter)
+
+            if (prodFilter) {
+                
+                prodFilter[0].productos = prodFilter[0].productos.filter(producto => producto.id != idProduct)
+                await fs.promises.writeFile(this.ruta, JSON.stringify(prodFilter, null, 2))
+                return {msg: 'producto eliminado'}
+            } else {
+                return {error: 'no existe el producto'}
+            }
+
+            } catch (error) {       
+            console.log(error)
+        }
+    } 
+	async deleteId(id){
+        //console.log(id)
+        try {
+            let dataArch = await this.readFileFunction(this.ruta)
+            //console.log(this.ruta)
+            //console.log(dataArch)
+            let producto = dataArch.find(producto => producto.id == id)
+            
+            if (producto) {
+                console.log(producto)
+                const dataArchParseFiltrado = dataArch.filter(prod => prod.id !== id)   
+                await fs.promises.writeFile(this.ruta, JSON.stringify(dataArchParseFiltrado, null, 2), 'utf-8')
+
+                //console.log('Producto eliminado')
+            }else{
+                console.log('no existe el producto')
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    } 
 	
 }
 

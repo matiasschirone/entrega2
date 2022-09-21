@@ -1,8 +1,12 @@
 const { response } = require('express');
+//const { productById } = require('../daos/producto/productoDaoArchivo.js');
 
-const CarritoDaoArchivo = require('../daos/carrito/CarritoDaoArchivo.js')
+const CarritoDaoArchivo = require('../daos/carrito/CarritoDaoArchivo.js');
+const ProductosDaoArchivo = require('../daos/productos/ProductosDaoArchivo.js');
 
-const carritoDaoArchivo = new CarritoDaoArchivo('./archivoDB/carrito.json')
+const carritoDaoArchivo = new CarritoDaoArchivo('./archivosDB/carrito.json');
+
+const contenedor = new ProductosDaoArchivo('./archivosDB/productos.json');
 
 //crea carrito y devuelve su id
 const postCarrito = async(req, res = response) => {
@@ -34,9 +38,9 @@ const deleteCarrito = async(req, res = response) => {
 const postbyIDCarrito = async(req, res = response) => {
     const { id, id_prod } = req.params
 
-    const productById = await productoDaoArchivo.getById(parseInt(id_prod))
+    productById = await contenedor.getById(parseInt(id_prod))
     console.log("productById", productById)
-    let carritoById = await carritoDaoArchivo.addProductToCart(parseInt(id, productById))
+    const carritoById = await carritoDaoArchivo.addProductToCart(parseInt(id, productById))
 
     res.send({
         message: 'Producto agregado al carrito',
