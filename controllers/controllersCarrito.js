@@ -36,7 +36,7 @@ const postbyIDCarrito = async(req, res = response) => {
 
     const productById = await productoDaoArchivo.getById(parseInt(id_prod))
     console.log("productById", productById)
-    let carritoById = await carritoDaoArchivo.addProductToCart(id, productById)
+    let carritoById = await carritoDaoArchivo.addProductToCart(parseInt(id, productById))
 
     res.send({
         message: 'Producto agregado al carrito',
@@ -51,7 +51,7 @@ const deleteByIdCarrito = async(req, res = response) => {
     
     const { id, id_prod } = req.params
 
-    let carritoById = await carritoDaoArchivo.deleteProductFromCart(id, id_prod)
+    let carritoById = await carritoDaoArchivo.deleteProductFromCart(parseInt(id, id_prod))
 
     res.send({
         message: 'Producto eliminado del carrito',
@@ -62,8 +62,9 @@ const deleteByIdCarrito = async(req, res = response) => {
 //routerCarrito.get('/:id', async(req, res = response) => {
 const getCarritoById = async(req, res = response) => {
     const id = req.params.id
+    console.log(req.params)
     
-    let productoId = await carritoDaoArchivo.getById(id)   
+    let productoId = await carritoDaoArchivo.getById(parseInt(id))   
     res.send(productoId)
 } 
 
@@ -72,7 +73,7 @@ const getCarritoById = async(req, res = response) => {
 const listarCarrito = async(req, res = response) => {
     const id = req.params.id
 
-    let productoId = await carritoDaoArchivo.getById(id)
+    let productoId = await carritoDaoArchivo.getById(parseInt(id))
     res.send(productoId)
 } 
 

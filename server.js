@@ -14,8 +14,6 @@ app.use(express.json());
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
-const administrador = true;
-
 
 app.use('/api/productos', routerProductos)
 app.use('/api/carrito', routerCarrito)

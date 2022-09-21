@@ -4,6 +4,7 @@ class CarritoDaoArchivo extends ContenedorArchivo {
     constructor() {
         super('./archivosDB/carrito.json');
     }
+
     async addProductToCart(idCart, objProduct){
         try{
             let dataArch = await this.readFileFunction(this.ruta)
@@ -11,7 +12,7 @@ class CarritoDaoArchivo extends ContenedorArchivo {
             let carrito = dataArch.find(carrito => carrito.id == idCart)
             console.log(carrito)
             if (carrito) {
-                carrito.productos.push(objProduct)
+                carritoDaoArchivo.productos.push(objProduct)
                 await fs.promises.writeFile(this.ruta, JSON.stringify( dataArch, null, 2))
                 return {msg: 'producto agregado al carrito'}    
             } else {
@@ -22,7 +23,6 @@ class CarritoDaoArchivo extends ContenedorArchivo {
         }
 
 	}
-
 
 	async deleteProductFromCart(idCart, idProduct) {
 		try {
