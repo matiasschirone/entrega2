@@ -38,9 +38,9 @@ const deleteCarrito = async(req, res = response) => {
 const postbyIDCarrito = async(req, res = response) => {
     const { id, id_prod } = req.params
 
-    productById = await contenedor.getById(parseInt(id_prod))
+    const productById = await contenedor.getById(parseInt(id_prod))
     console.log("productById", productById)
-    const carritoById = await carritoDaoArchivo.addProductToCart(parseInt(id, productById))
+    const carritoById = await carritoDaoArchivo.addProductToCart(parseInt(id), productById)
 
     res.send({
         message: 'Producto agregado al carrito',

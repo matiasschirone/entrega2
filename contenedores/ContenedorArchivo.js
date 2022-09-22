@@ -132,7 +132,7 @@ class ContenedorArchivo {
             let carrito = dataArch.find(carrito => carrito.id == idCart)
             console.log(carrito)
             if (carrito) {
-                carritoDaoArchivo.productos.push(objProduct)
+                carrito.productos.push(objProduct)
                 await fs.promises.writeFile(this.ruta, JSON.stringify( dataArch, null, 2))
                 return {msg: 'producto agregado al carrito'}    
             } else {
